@@ -1,0 +1,28 @@
+{
+  "name": "yet-another-ng-paginator",
+  "version": "0.0.0",
+  "description": "Yet another angular pagination library",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kennethlynne/yet-another-ng-paginator.git"
+  },
+  "keywords": [
+    "pagination",
+    "angular"
+  ],
+  "author": "Kenneth Lynne <kenneth.lynne@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kennethlynne/yet-another-ng-paginator/issues"
+  },
+  "homepage": "https://github.com/kennethlynne/yet-another-ng-paginator",
+  "devDependencies": {
+    "gulp": "^3.6.2",
+    "karma": "^0.12.16",
+    "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "yet-another-ng-paginator",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kennethlynne/yet-another-ng-paginator",
+  "authors": [
+    "Kenneth Lynne <kenneth.lynne@gmail.com>"
+  ],
+  "description": "Yet another angular pagination library",
+  "main": "yet-another-ng-paginator.js",
+  "keywords": [
+    "angular",
+    "pagination"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16",
+    "angular-mocks": "~1.2.16"
+  }
+}
