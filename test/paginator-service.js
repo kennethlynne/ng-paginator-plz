@@ -6,7 +6,7 @@ describe('Service: Paginator', function () {
 
   beforeEach(function () {
 
-    module('YAngPaginator');
+    module('ngPaginatorPlz');
 
     inject(function (_Paginator_) {
       Paginator = _Paginator_;

@@ -1,29 +1,58 @@
 'use strict';
 
-angular.module('YAngPaginator', [])
-  .controller('paginatorComponentCtrl', function ($scope, Paginator, $log) {
-    if (!$scope.paginator instanceof Paginator) {
-      $log.error($scope.paginator, 'is not a valid Paginator');
-    }
+angular.module('ngPaginatorPlz', [])
+  .run(function ($templateCache) {
+      $templateCache.put('paginator.html', [
+        '<ul class="pagination paginator-component" ng-class="{\'visibility-hidden\': paginator.pages.length==1}">',
+        '  <li ng-class="{disabled:!paginator.hasPrevious()}">',
+        '   <a ng-click="paginator.previous()" ng-disabled="!paginator.hasPrevious()">Previous page</a>',
+        '  </li>',
+        '',
+        '  <li ng-repeat="page in paginator.pages" ng-class="{active: (paginator.getCurrentPageNumber()==$index+1)}">',
+        '    <a ng-click="paginator.setPage($index+1)">{{$index+1}}</a>',
+        '  </li>',
+        '',
+        '  <li ng-show="paginator.pages.length > 1" ng-class="{disabled:!paginator.hasNext()}">',
+        '    <a ng-click="paginator.next()" ng-disabled="!paginator.hasNext()">Next page</a>',
+        '  </li>',
+        '</ul>'
+      ].join('\n'))
   })
-  .directive('paginator', function () {
+  .value('DefaultPaginatorTemplate', 'paginator.html')
+  .directive('paginator', ['Paginator', 'DefaultPaginatorTemplate', function (Paginator, DefaultPaginatorTemplate) {
     return {
       restrict: 'E',
       scope: {
-        paginator: '='
+        data: '=',
+        pageSize: '@',
+        exportPagedDataTo: '='
       },
-      controller: 'paginatorComponentCtrl'
-    };
-  })
-  .factory('Paginator', function () {
+      templateUrl: DefaultPaginatorTemplate,
+      controller: ['$scope', function ($scope) {
+        if (!angular.isArray($scope.exportPagedDataTo)) {
+          throw Error('You must provide an array to export paged data to. Got ' + $scope.exportPagedDataTo);
+        }
 
+        $scope.paginator = new Paginator({
+          data: $scope.data,
+          pageSize: Number($scope.pageSize || 20),
+          pagedDataReference: $scope.exportPagedDataTo
+        });
+
+        $scope.$watch('data', function (newData) {
+          $scope.paginator.setData(newData);
+        });
+      }]
+    };
+  }])
+  .factory('Paginator', function () {
     function Paginator(cfg) {
       this.data = [];
       this.pages = [];
-      this.currentPageData = [];
+      this.currentPageData = cfg.pagedDataReference || [];
       this.pageSize = cfg && cfg.pageSize ? cfg.pageSize : 20;
-      this.setData(cfg && cfg.data || []);
       this.currentPage = 1;
+      this.setData(cfg && cfg.data || []);
     }
 
     Paginator.prototype.next = function () {
@@ -43,6 +72,7 @@ angular.module('YAngPaginator', [])
     Paginator.prototype.setPage = function (page) {
       var paginator = this;
       paginator.currentPage = page;
+      paginator.getPaginatedData();
     };
 
     Paginator.prototype.getCurrentPageNumber = function () {
@@ -66,6 +96,10 @@ angular.module('YAngPaginator', [])
     Paginator.prototype.setData = function (data) {
       var paginator = this,
         nrOfPages;
+
+      if (!angular.isArray(data)) {
+        throw Error('You must provide an array to Paginator.setData(). Got ' + data);
+      }
 
       paginator.data.length = 0;
       paginator.pages.length = paginator.getNumberOfPages();

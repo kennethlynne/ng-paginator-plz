@@ -1,5 +1,5 @@
 {
-  "name": "yet-another-ng-paginator",
+  "name": "ng-paginator-plz",
   "version": "0.0.0",
   "description": "Yet another angular pagination library",
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kennethlynne/yet-another-ng-paginator.git"
+    "url": "https://github.com/kennethlynne/ng-paginator-plz.git"
   },
   "keywords": [
     "pagination",
@@ -16,12 +16,13 @@
   "author": "Kenneth Lynne <kenneth.lynne@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kennethlynne/yet-another-ng-paginator/issues"
+    "url": "https://github.com/kennethlynne/ng-paginator-plz/issues"
   },
-  "homepage": "https://github.com/kennethlynne/yet-another-ng-paginator",
+  "homepage": "https://github.com/kennethlynne/ng-paginator-plz",
   "devDependencies": {
     "gulp": "^3.6.2",
     "karma": "^0.12.16",
+    "karma-chrome-launcher": "~0.1.1",
     "karma-jasmine": "^0.1.5",
     "karma-phantomjs-launcher": "^0.1.4"
   }
