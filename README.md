@@ -1,4 +1,4 @@
-yet-another-ng-paginator
+ng-paginator
 ========================
 
 Yet another Angular pagination lib
