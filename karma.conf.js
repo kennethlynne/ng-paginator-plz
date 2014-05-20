@@ -16,7 +16,7 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'yet-another-ng-paginator.js',
+      'ng-paginator.js',
       'paginator.html',
       'test/**/*.js'
     ],
@@ -32,11 +32,7 @@ module.exports = function(config) {
     },
 
     ngHtml2JsPreprocessor: {
-      // strip this from the file path
-      //stripPrefix: 'app/',
-      // setting this option will create only a single module that contains templates
-      // from all the files, so you can load them all with module('foo')
-      moduleName: 'foo'
+      moduleName: 'template'
     },
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -63,7 +59,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode

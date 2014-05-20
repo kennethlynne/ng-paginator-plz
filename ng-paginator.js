@@ -1,17 +1,16 @@
 'use strict';
 
-angular.module('YAngPaginator', [])
-  .directive('paginator', ['PG', function (PG) {
-
+angular.module('ngPaginator', [])
+  .directive('paginator', ['Paginator', function (Paginator) {
     return {
       restrict: 'E',
       scope: {
         data: '=',
         pageSize: '@',
-        pageData: '&' // exports to parent scope for current page data show
+        pageData: '&' //export paginated data to parent scope
       },
       templateUrl: 'paginator.html',
-      controller: ['$scope', '$element', function ($scope, $elem) {
+      controller: ['$scope', function ($scope) {
         // set page size
         $scope.pageSize = Number($scope.pageSize || 20);
 
@@ -21,7 +20,7 @@ angular.module('YAngPaginator', [])
             pageSize: $scope.pageSize
           });
           // update current page data in parent scope
-          $scope.$watch('paginator.currentPageData', function() {
+          $scope.$watch('paginator.currentPageData', function () {
             $scope.pageData({pageData: $scope.paginator.currentPageData})
           });
         }
@@ -30,7 +29,7 @@ angular.module('YAngPaginator', [])
       }]
     };
   }])
-  .factory('PG', function () {
+  .factory('Paginator', function () {
     function Paginator(cfg) {
       this.data = [];
       this.pages = [];

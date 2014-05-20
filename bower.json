@@ -1,12 +1,12 @@
 {
-  "name": "yet-another-ng-paginator",
+  "name": "ng-paginator",
   "version": "0.0.0",
-  "homepage": "https://github.com/kennethlynne/yet-another-ng-paginator",
+  "homepage": "https://github.com/kennethlynne/ng-paginator",
   "authors": [
     "Kenneth Lynne <kenneth.lynne@gmail.com>"
   ],
   "description": "Yet another angular pagination library",
-  "main": "yet-another-ng-paginator.js",
+  "main": "ng-paginator.js",
   "keywords": [
     "angular",
     "pagination"

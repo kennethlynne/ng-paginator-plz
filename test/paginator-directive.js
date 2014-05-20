@@ -5,14 +5,14 @@ describe('Directive: paginator', function () {
 
   beforeEach(function () {
 
-    module('YAngPaginator', 'foo');
+    module('ngPaginator', 'template');
 
     var data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     inject(function ($rootScope, _$compile_) {
       parentScope = $rootScope.$new();
       parentScope.source = data;
-      parentScope.getPageData = function(pageData) {
+      parentScope.getPageData = function (pageData) {
         parentScope.currentPageData = pageData;
       };
       $compile = _$compile_;
@@ -33,7 +33,7 @@ describe('Directive: paginator', function () {
     expect(scope.paginator.currentPage).toBe(1);
     // template rendering test
     expect(lis.length).toBe(4);
-    expect(lis.eq(1).text().trim()).toBe('1')
+    expect(lis.eq(1).text().trim()).toBe('1');
     // parent scope page data init ok
     expect(parentScope.currentPageData.length).toBe(5);
     expect(parentScope.currentPageData[0]).toBe(1);
