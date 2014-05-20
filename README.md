@@ -13,10 +13,15 @@ bower install ng-paginate-plz --save
 ```
 
 Add `ng-paginate-plz` as a dependancy to your module.
-```
+```javascript
 angular.module('yourApp', 'ngPaginatorPlz')
 ```
 # Usage:
+Provide some data in an array:
+
+```javascript
+$scope.data = [1,2,3,4,5,6,7,8,9,10];
+```
 
 ```html
 <paginator data="data" page-size="5" export-paged-data-to="targetVariable"></paginator>
@@ -26,7 +31,7 @@ angular.module('yourApp', 'ngPaginatorPlz')
 </ul>
 ```
 
-Now the provided data will be paginated and exported into the `target` variable.
+Now the provided data will be paginated and the currently visible data is exported into `targetVariable`.
 It is up to you to list this data.
 
 ## Parameters:
@@ -36,7 +41,7 @@ It is up to you to list this data.
 
 # Custom template
 Provide a custom template by overriding the default template url:
-```
+```javascript
 angular.module('yourApp')
   .value('DefaultPaginatorTemplate', 'views/custom-paginator.html')
 ```
