@@ -1,29 +1,43 @@
 'use strict';
 
 angular.module('YAngPaginator', [])
-  .controller('paginatorComponentCtrl', function ($scope, Paginator, $log) {
-    if (!$scope.paginator instanceof Paginator) {
-      $log.error($scope.paginator, 'is not a valid Paginator');
-    }
-  })
-  .directive('paginator', function () {
+  .directive('paginator', ['PG', function (PG) {
+
     return {
       restrict: 'E',
       scope: {
-        paginator: '='
+        data: '=',
+        pageSize: '@',
+        pageData: '&' // exports to parent scope for current page data show
       },
-      controller: 'paginatorComponentCtrl'
-    };
-  })
-  .factory('Paginator', function () {
+      templateUrl: 'paginator.html',
+      controller: ['$scope', '$element', function ($scope, $elem) {
+        // set page size
+        $scope.pageSize = Number($scope.pageSize || 20);
 
+        function _pagination() {
+          $scope.paginator = new PG({
+            data: $scope.data,
+            pageSize: $scope.pageSize
+          });
+          // update current page data in parent scope
+          $scope.$watch('paginator.currentPageData', function() {
+            $scope.pageData({pageData: $scope.paginator.currentPageData})
+          });
+        }
+
+        $scope.$watch('data', _pagination);
+      }]
+    };
+  }])
+  .factory('PG', function () {
     function Paginator(cfg) {
       this.data = [];
       this.pages = [];
       this.currentPageData = [];
       this.pageSize = cfg && cfg.pageSize ? cfg.pageSize : 20;
-      this.setData(cfg && cfg.data || []);
       this.currentPage = 1;
+      this.setData(cfg && cfg.data || []);
     }
 
     Paginator.prototype.next = function () {
@@ -43,6 +57,7 @@ angular.module('YAngPaginator', [])
     Paginator.prototype.setPage = function (page) {
       var paginator = this;
       paginator.currentPage = page;
+      paginator.getPaginatedData();
     };
 
     Paginator.prototype.getCurrentPageNumber = function () {

@@ -3,7 +3,29 @@ yet-another-ng-paginator
 
 Yet another Angular pagination lib
 
+# Install:
+```
+npm install
+```
+```
+bower install
+```
 
+# Usage:
+
+```
+  <paginator data="data source to be paginated" page-size="items per page" page-data="getPageData(pageData)"></paginator>
+```
+## attributes:
+1.  data: parent scope data bind for pagination
+2.  page-size: items count per page, defaults to 20
+3.  page-data: parent scope method to bind for exporting current page data
+
+
+# Test:
+```
+./node_modules/karma/bin/karma start
+```
 
 The MIT License (MIT)
 

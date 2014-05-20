@@ -8,8 +8,8 @@ describe('Service: Paginator', function () {
 
     module('YAngPaginator');
 
-    inject(function (_Paginator_) {
-      Paginator = _Paginator_;
+    inject(function (_PG_) {
+      Paginator = _PG_;
     });
 
   });
