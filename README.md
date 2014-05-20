@@ -19,10 +19,10 @@ angular.module('yourApp', 'ngPaginatorPlz')
 # Usage:
 
 ```html
-<paginator data="data" page-size="5" export-paged-data-to="target"></paginator>
+<paginator data="data" page-size="5" export-paged-data-to="targetVariable"></paginator>
 
 <ul>
-    <li ng-repeat="row in target">{{row}}</li>
+    <li ng-repeat="row in targetVariable">{{row}}</li>
 </ul>
 ```
 
