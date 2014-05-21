@@ -1,4 +1,4 @@
-ng-paginator-plz
+ng-paginator-plz [![Build Status](https://travis-ci.org/kennethlynne/ng-paginator-plz.svg?branch=master)](https://travis-ci.org/kennethlynne/ng-paginator-plz)
 ========================
 
 Angular pagination library that handles pagination non-intrusively.
@@ -50,8 +50,10 @@ angular.module('yourApp')
 
 ```
 npm install
-karma start
+grunt
 ```
+
+To run unit tests:  `grunt ` this will run `jshint` and `karma`
 
 ========================
 
@@ -77,4 +79,4 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[![Analytics](https://ga-beacon.appspot.com/UA-46835353-1/kl-ng-paginator/README)](https://github.com/igrigorik/ga-beacon)
+[![Analytics](https://ga-beacon.appspot.com/UA-46835353-1/ng-paginator-plz/README)](https://github.com/igrigorik/ga-beacon)

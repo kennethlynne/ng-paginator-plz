@@ -119,14 +119,14 @@ describe('Service: Paginator', function () {
     expect(paginated.pages.length).toBe(2);
   });
 
-  it('should update number of pages on data change', function() {
+  it('should update number of pages on data change', function () {
     var data = [1, 2, 3, 4, 5, 6, 7, 8, 9],
       paginated = new Paginator({
         data: data,
         pageSize: 5
       });
 
-    paginated.setData([1,2]);
+    paginated.setData([1, 2]);
     expect(paginated.pages.length).toBe(1);
   });
 

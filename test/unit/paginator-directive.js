@@ -5,7 +5,7 @@ describe('Directive: paginator', function () {
 
   beforeEach(function () {
 
-    module('ngPaginatorPlz');
+    module('ngPaginatorPlz', 'src/templates/paginator.html');
 
     inject(function ($rootScope, _$compile_) {
       parentScope = $rootScope.$new();
@@ -14,8 +14,8 @@ describe('Directive: paginator', function () {
 
   });
 
-  it('should list all pages', function() {
-    parentScope.data = [1,2,3,4,5,6,7,8,9];
+  it('should list all pages', function () {
+    parentScope.data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     parentScope.target = [];
     element = angular.element('<paginator data="data" page-size="5" export-paged-data-to="target"></paginator>');
     element = $compile(element)(parentScope);
@@ -27,8 +27,8 @@ describe('Directive: paginator', function () {
     expect(lis.eq(2).text().trim()).toBe('2');
   });
 
-  it('should have correct internal state after initialization', function() {
-    parentScope.data = [1,2,3,4,5,6,7,8,9];
+  it('should have correct internal state after initialization', function () {
+    parentScope.data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     parentScope.target = [];
     element = angular.element('<paginator data="data" page-size="5" export-paged-data-to="target"></paginator>');
     element = $compile(element)(parentScope);
@@ -41,7 +41,7 @@ describe('Directive: paginator', function () {
   });
 
   it('should export current page data', function () {
-    parentScope.data = [1,2,3,4,5,6,7,8,9];
+    parentScope.data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     parentScope.target = [];
 
     parentScope.getPageData = jasmine.createSpy('getPageData');
@@ -51,11 +51,11 @@ describe('Directive: paginator', function () {
     scope = element.children().scope();
 
     expect(parentScope.target.length).toBe(5);
-    expect(parentScope.target).toEqual([1,2,3,4,5]);
+    expect(parentScope.target).toEqual([1, 2, 3, 4, 5]);
   });
 
   it('should be navigable', function () {
-    parentScope.data = [1,2,3,4,5,6,7,8,9];
+    parentScope.data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     parentScope.target = [];
 
     element = angular.element('<paginator data="data" page-size="5" export-paged-data-to="target"></paginator>');
@@ -64,14 +64,14 @@ describe('Directive: paginator', function () {
     scope = element.children().scope();
 
     expect(scope.paginator.currentPage).toBe(1);
-    expect(parentScope.target).toEqual([1,2,3,4,5]);
+    expect(parentScope.target).toEqual([1, 2, 3, 4, 5]);
 
     scope.paginator.next();
     expect(scope.paginator.currentPage).toBe(2);
-    expect(parentScope.target).toEqual([6,7,8,9]);
+    expect(parentScope.target).toEqual([6, 7, 8, 9]);
 
     scope.paginator.previous();
     expect(scope.paginator.currentPage).toBe(1);
-    expect(parentScope.target).toEqual([1,2,3,4,5]);
+    expect(parentScope.target).toEqual([1, 2, 3, 4, 5]);
   });
 });

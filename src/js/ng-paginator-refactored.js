@@ -1,25 +1,8 @@
 'use strict';
 
 angular.module('ngPaginatorPlz', [])
-  .run(function ($templateCache) {
-      $templateCache.put('paginator.html', [
-        '<ul class="pagination paginator-component" ng-class="{\'visibility-hidden\': paginator.pages.length==1}">',
-        '  <li ng-class="{disabled:!paginator.hasPrevious()}">',
-        '   <a ng-click="paginator.previous()" ng-disabled="!paginator.hasPrevious()">Previous page</a>',
-        '  </li>',
-        '',
-        '  <li ng-repeat="page in paginator.pages" ng-class="{active: (paginator.getCurrentPageNumber()==$index+1)}">',
-        '    <a ng-click="paginator.setPage($index+1)">{{$index+1}}</a>',
-        '  </li>',
-        '',
-        '  <li ng-show="paginator.pages.length > 1" ng-class="{disabled:!paginator.hasNext()}">',
-        '    <a ng-click="paginator.next()" ng-disabled="!paginator.hasNext()">Next page</a>',
-        '  </li>',
-        '</ul>'
-      ].join('\n'))
-  })
-  .value('DefaultPaginatorTemplate', 'paginator.html')
-  .directive('paginator', ['Paginator', 'DefaultPaginatorTemplate', function (Paginator, DefaultPaginatorTemplate) {
+
+  .directive('paginator', function (Paginator) {
     return {
       restrict: 'E',
       scope: {
@@ -27,24 +10,26 @@ angular.module('ngPaginatorPlz', [])
         pageSize: '@',
         exportPagedDataTo: '='
       },
-      templateUrl: DefaultPaginatorTemplate,
-      controller: ['$scope', function ($scope) {
-        if (!angular.isArray($scope.exportPagedDataTo)) {
-          throw Error('You must provide an array to export paged data to. Got ' + $scope.exportPagedDataTo);
+      templateUrl: 'src/templates/paginator.html',
+      controller: ['$scope',
+        function ($scope) {
+          if (!angular.isArray($scope.exportPagedDataTo)) {
+            throw Error('You must provide an array to export paged data to. Got ' + $scope.exportPagedDataTo);
+          }
+
+          $scope.paginator = new Paginator({
+            data: $scope.data,
+            pageSize: Number($scope.pageSize || 20),
+            pagedDataReference: $scope.exportPagedDataTo
+          });
+
+          $scope.$watch('data', function (newData) {
+            $scope.paginator.setData(newData);
+          });
         }
-
-        $scope.paginator = new Paginator({
-          data: $scope.data,
-          pageSize: Number($scope.pageSize || 20),
-          pagedDataReference: $scope.exportPagedDataTo
-        });
-
-        $scope.$watch('data', function (newData) {
-          $scope.paginator.setData(newData);
-        });
-      }]
+      ]
     };
-  }])
+  })
   .factory('Paginator', function () {
     function Paginator(cfg) {
       this.data = [];
