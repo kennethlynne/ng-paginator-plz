@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Yet another angular pagination library",
   "scripts": {
-    "test": "grunt"
+    "test": "grunt release"
   },
   "repository": {
     "type": "git",
