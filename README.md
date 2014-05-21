@@ -1,4 +1,4 @@
-ng-paginator-plz
+ng-paginator-plz [![Build Status](https://travis-ci.org/kennethlynne/ng-paginator-plz.svg?branch=master)](https://travis-ci.org/kennethlynne/ng-paginator-plz)
 ========================
 
 Angular pagination library that handles pagination non-intrusively.
