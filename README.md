@@ -50,8 +50,10 @@ angular.module('yourApp')
 
 ```
 npm install
-karma start
+grunt
 ```
+
+To run unit tests:  `grunt ` this will run `jshint` and `karma`
 
 ========================
 

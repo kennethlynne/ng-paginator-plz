@@ -1,27 +1,32 @@
 // Karma configuration
 // Generated on Fri May 16 2014 21:11:40 GMT+0200 (CEST)
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '../../',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
+    preprocessors: {
+      'src/templates/paginator.html': ['ng-html2js']
+    },
+
     // list of files / patterns to load in the browser
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'ng-paginator-plz.js',
-      'test/**/*.js'
+      'src/js/*.js',
+      'test/unit/*.js',
+
+      'src/templates/paginator.html'
     ],
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -53,6 +58,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+
   });
 };
