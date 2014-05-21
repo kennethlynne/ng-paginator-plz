@@ -49,7 +49,7 @@ module.exports = function (grunt) {
         options: {
           concat: 'dist'
         }
-      },
+      }
     },
 
     concat: {
