@@ -1,4 +1,4 @@
-<ul class="pagination paginator-component" ng-class="{'visibility-hidden': paginator.pages.length==1}">
+<ul ng-class="{'visibility-hidden': paginator.pages.length==1}">
 
    <li ng-class="{disabled:!paginator.hasPrevious()}">
       <a ng-click="paginator.previous()" ng-disabled="!paginator.hasPrevious()">Previous page</a>
