@@ -3,7 +3,7 @@ ng-paginator-plz [![Build Status](https://travis-ci.org/kennethlynne/ng-paginato
 
 Angular pagination library that handles pagination non-intrusively.
 It provides you with the paginated data and some controlls to navigate in the data,
-it's up to you to handle listing of data.
+it's up to you to handle listing of data. See demo [here](http://kennethlynne.github.io/ng-paginator-plz/demo/).
 
 # Install:
 Download zip, or use bower
