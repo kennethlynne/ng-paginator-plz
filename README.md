@@ -9,7 +9,7 @@ it's up to you to handle listing of data. See demo [here](http://kennethlynne.gi
 Download zip, or use bower
 
 ```
-bower install ng-paginate-plz --save
+bower install ng-paginator-plz --save
 ```
 
 Add `ng-paginate-plz` as a dependancy to your module.
